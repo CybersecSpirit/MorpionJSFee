@@ -1,0 +1,359 @@
+<html>
+<header>
+<title>This is JSFee</title>
+<script src="jquery-3.3.1.min.js"></script>
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=PT+Mono);
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #E67E0F;
+}
+
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 450px;
+  width: 90vmin;
+  height: 450px;
+  height: 90vmin;
+  margin: auto;
+  background-color: #E67E0F;
+}
+
+.row {
+  height: 150px;
+  height: 30vmin;
+}
+
+.cell {
+  float: left;
+  width: 150px;
+  width: 30vmin;
+  height: 150px;
+  height: 30vmin;
+  position: relative;
+}
+
+.Mamie {
+  position: absolute;
+  background-image: url(mamie.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 30px;
+  top: 6vmin;
+  left: 10px;
+  left: 3vmin;
+  width: 120px;
+  width: 24vmin;
+  height: 120px;
+  height: 24vmin;
+  border: 3px;
+  border: 1.0vmin;
+}
+
+.Potiron {
+  position: absolute;
+  background-image: url(potiron.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 30px;
+  top: 6vmin;
+  left: 10px;
+  left: 3vmin;
+  width: 120px;
+  width: 24vmin;
+  height: 120px;
+  height: 24vmin;
+  border: 3px;
+  border: 1.0vmin;
+}
+
+.hline {
+  position: absolute;
+  height: 5px;
+  height: 1vmin;
+  width: 440px;
+  width: 88vmin;
+  left: 5px;
+  left: 1vmin;
+  border-radius: 50px;
+  background-color: #FFFFFF;
+}
+
+.line1 {
+  top: 147.5px;
+  top: 29.5vmin;
+}
+
+.line2 {
+  bottom: 147.5px;
+  bottom: 29.5vmin;
+}
+
+.vline {
+  position: absolute;
+  width: 5px;
+  width: 1vmin;
+  height: 440px;
+  height: 88vmin;
+  top: 5px;
+  top: 1vmin;
+  border-radius: 50px;
+  background-color: #FFF;
+}
+
+.line3 {
+  left: 147.5px;
+  left: 29.5vmin;
+}
+
+.line4 {
+  right: 147.5px;
+  right: 29.5vmin;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+  color: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  background-color: #E67E0F;
+  padding: 15px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+  background-color: transparent;
+  outline: none;
+  border-style: solid;
+  font-family: "PT Mono", sans;
+  height: 130px;
+  width: 130px;
+}
+
+#Mamie{
+  background-image: url("mamie.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100px;
+  width: 100px;
+}
+
+#Potiron{
+  background-image: url("potiron.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100px;
+  width: 100px;
+}
+
+div#tour {
+  font-size:40px;
+  font-family:fantasy;
+  color:#fff;
+  text-align: center;
+
+}
+
+button:hover {
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.overlay-on .container {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.x-color {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.o-color {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.winner {
+  font-size: 150%;
+}
+
+p {
+  margin: 5px;
+}
+
+
+</style>
+
+</header>
+<body>
+
+<!-- JSFEE -->
+<!-- Credits to codepen.io/joshuahenson -->
+<div class="container">
+
+    <div class="row">
+        <div class="cell" id="0"></div>
+        <div class="cell" id="1"></div>
+        <div class="cell" id="2"></div>
+    </div>
+    <div class="row">
+        <div class="cell" id="3"></div>
+        <div class="cell" id="4"></div>
+        <div class="cell" id="5"></div>
+    </div>
+    <div class="row">
+        <div class="cell" id="6"></div>
+        <div class="cell" id="7"></div>
+        <div class="cell" id="8"></div>
+    </div>
+    <div class="hline line1"></div>
+    <div class="hline line2"></div>
+    <div class="vline line3"></div>
+    <div class="vline line4"></div>
+    <div id="tour">
+
+    </div>
+</div>
+
+<div class="overlay">
+    <div class="modal">
+        <div id="modal-text">
+            <p>Choisis ton pion!</p>
+        </div>
+        <button class="start x-color" id="Mamie"><div></div></button>
+        <button class="start o-color" id="Potiron"><div></div></button>
+    </div>
+</div>
+<script type="text/javascript">
+var user, comp, playing, gameBoard;
+var winPatterns = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
+
+//update board onscreen and control win logic
+function placeMark(mark, location) {
+    if (playing == true) {
+      $('#' + location).html('<div class="' + mark + '"></div>')
+      gameBoard[location] = mark;
+
+      if (checkWin(location, gameBoard)) {
+        //console.log(mark + ' wins!');
+        playing = false;
+        if(mark == 'Mamie')
+          $('#modal-text').html('<p class="winner">' + 'Mamie a gagn&eacute!</p><p>Rejouer?</p>');
+        else
+          $('#modal-text').html('<p class="winner">' + 'Potiron a gagn&eacute!</p><p>Rejouer?</p>');
+        $('.overlay').fadeIn();
+        $('body').addClass('overlay-on');
+      }
+      if (Object.keys(gameBoard).length == 9) {
+        //console.log('game over')
+        playing = false;
+
+        $('#modal-text').html("<p>Egalit&eacute.</p><p>Rejouer?</p>");
+        $('.overlay').fadeIn();
+        $('body').addClass('overlay-on');
+      }
+    }
+  }
+//loop over array of winning patterns and see if board matches
+function checkWin(cell, board) {
+    for (var i = 0, len = winPatterns.length; i < len; i++) {
+      //check if move was in that winPattern to avoid nulls matching
+      if (winPatterns[i].indexOf(cell) > -1) {
+        if (board[winPatterns[i][0]] == board[winPatterns[i][1]] &&
+          board[winPatterns[i][1]] == board[winPatterns[i][2]]) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+/*** User controls/initialization ***/
+$(document).ready(function() {
+  $('.start').on('click', function() {
+    gameBoard = {};
+    $('.cell').html('');
+    playing = true;
+    $('.overlay').hide();
+    $('body').removeClass('overlay-on');
+    if($(this).is('#Mamie')) {
+      user = 'Mamie';
+      comp = 'Potiron';
+    } else {
+      user = 'Potiron';
+      comp = 'Mamie';
+    }
+    $('#tour').html("<p>Au tour de " + user);
+  });
+
+  //user places mark on board
+  $('.cell').on('click', function(mark) {
+    var id = parseInt($(this).attr('id'));
+    if (!gameBoard[id]) { //check if cell empty
+      placeMark(user, id);
+      $(this).removeClass('pointer'); //class no longer toggled after mark is placed
+      if(user == 'Potiron') user = 'Mamie';
+      else user = 'Potiron';
+      $('#tour').html("<p>Au tour de " + user);
+    }
+  });
+  //pointer change on empty cell
+  $('.cell').hover(function() {
+    if (!gameBoard[$(this).attr('id')]) {
+      $(this).toggleClass('pointer');
+    }
+  });
+});
+</script>
+
+
+
+<!-- END JSFEE-->
+</body>
+</html>
